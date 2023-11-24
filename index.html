@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de Vue.js en HTML</title>
+  <!-- Incluye Vue.js desde un CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<style>
+.mi-boton{
+  color: #00233C;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+  border-radius: 12px;
+  border: 1px solid #00233C;
+  padding: 16px;
+  height: 58px;
+}  
+.mi-boton:hover {
+  text-decoration: none;
+  background-color: #dfdddd;
+}
+</style>
+<body>
+
+<!-- Contenedor para montar la instancia de Vue -->
+<div id="app">
+  <!-- Utiliza tu componente Vue -->
+  <mi-componente></mi-componente>
+  <contador-component></contador-component>
+</div>
+
+<script>
+  // Define tu componente Vue
+  Vue.component('mi-componente', {
+    template: '<p>¡Hola! Soy un componente Vue.</p>'
+  });
+  
+  Vue.component('contador-component', {
+    data: function() {
+      return {
+        contador: 0
+      };
+    },
+    methods: {
+      incrementarContador: function() {
+        // Incrementa el contador al hacer clic en el botón
+        this.contador++;
+      }
+    },
+    template: `
+      <div>
+        <p>Contador: {{ contador }}</p>
+        <button class="mi-boton" @click="incrementarContador">Incrementar</button>
+      </div>
+    `
+  });
+  
+  // Crea e monta una instancia de Vue
+  new Vue({
+    el: '#app'
+  });
+</script>
+
+</body>
+</html>
